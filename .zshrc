@@ -15,6 +15,14 @@ alias la="ls -A"
 alias lf="ls -F"
 alias ll="ls -l"
 
+alias gc="git commit"
+alias gca="git commit -a"
+alias gs="git status"
+alias gp="git push"
+alias gl="git pull"
+alias gb="git branch"
+alias gco="git checkout"
+
 alias r!=". ~/.zshrc"
 
 # For Rake to work with zsh:
