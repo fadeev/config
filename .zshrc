@@ -5,7 +5,7 @@ export PS1="\w: "
 export PROMPT='%~$(current_git_branch)%(!.!.:) '
 export RPROMPT=''
 
-export PATH="$HOME/bin:/usr/local/Cellar/ruby/1.9.2-p180/bin:/usr/local/bin"
+export PATH="$HOME/bin:/usr/local/Cellar/ruby/1.9.2-p290/bin:/usr/local/bin"
 export PATH="$PATH:/usr/bin:/bin:/usr/local/sbin:/usr/sbin:/sbin"
 export PATH="$PATH:/usr/X11/bin:/opt/local/bin"
 
@@ -24,6 +24,7 @@ alias gb="git branch"
 alias gco="git checkout"
 
 alias r!=". ~/.zshrc"
+alias c="clear"
 
 # For Rake to work with zsh:
 alias rake="noglob rake"
