@@ -3,7 +3,6 @@ set nocompatible   " No compatibility with Vi
 set ignorecase     " Case insensitive search
 set smartcase      " Capitalisation leads to case sensitivity
 set incsearch      " Incremental search
-set hlsearch       " Highlight search results
 
 set nowrap         " Switch wrap off for everything
 set autoindent     " Autoindenting on
