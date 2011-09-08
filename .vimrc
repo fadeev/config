@@ -16,7 +16,3 @@ set wildmenu       " Autocompletion menu, the regular one
 set tabstop=2      " Size of tab in spaces
 set shiftwidth=2   " How far text is indented using `<<` and `>>`
 set expandtab      " Tab is insert mode produces spaces
-
-" The following makes cursor centered (typewriter mode):
-:nnoremap j jzz 
-:nnoremap k kzz
