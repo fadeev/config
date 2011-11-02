@@ -12,6 +12,7 @@ syntax enable      " Syntax highlighting
 set nobackup       " No filename~ backups
 set splitbelow     " New files are placed below current
 set wildmenu       " Autocompletion menu, the regular one
+set ruler          " Line and column number in status line
 
 set tabstop=2      " Size of tab in spaces
 set shiftwidth=2   " How far text is indented using `<<` and `>>`
