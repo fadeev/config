@@ -10,6 +10,7 @@ set number         " Line numbering
 set numberwidth=5  " More space for numbers
 syntax enable      " Syntax highlighting
 set nobackup       " No filename~ backups
+set noswapfile 
 set splitbelow     " New files are placed below current
 set wildmenu       " Autocompletion menu, the regular one
 set ruler          " Line and column number in status line
