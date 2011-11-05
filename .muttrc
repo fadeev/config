@@ -1,0 +1,14 @@
+set timeout=10
+set mail_check=5
+set sort=threads
+set editor="vim + -c 'set wrap'"
+set move=no
+set copy=no
+set delete=yes
+set markers=no
+set include
+
+macro index gi "<change-folder> =INBOX<enter>"
+macro index ga "<change-folder> =[Gmail]/All<tab><enter>"
+
+folder-hook . 'macro index gd "<save-message>=[Gmail]/Trash<enter>"'
