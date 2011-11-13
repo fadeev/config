@@ -4,9 +4,11 @@
 (setq backup-by-copying t)
 (setq auto-save-default nil)
 (setq-default indent-tabs-mode nil)
+(setq org-log-done t) ; Adds "CLOSED" label with timestamp in org-mode
 (defalias 'yes-or-no-p 'y-or-n-p)
 (global-set-key (kbd "M-/") 'hippie-expand)
 (global-set-key (kbd "C-x C-k") 'kill-other-buffers)
+(add-to-list 'auto-mode-alist '("\\.org$" . org-mode))
 (add-hook 'c-mode-hook 'c-bits)
 (add-hook 'html-mode-hook 'html-bits)
 
