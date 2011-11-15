@@ -1,5 +1,8 @@
 (require 'cl)
 
+(require 'epa) ; GPG encryption in org-mode
+(epa-file-enable)
+
 (setq backup-directory-alist `(("." . "~/.emacs.d/backups/")))
 (setq backup-by-copying t)
 (setq auto-save-default nil)
@@ -11,6 +14,7 @@
 (add-to-list 'auto-mode-alist '("\\.org$" . org-mode))
 (add-hook 'c-mode-hook 'c-bits)
 (add-hook 'html-mode-hook 'html-bits)
+(menu-bar-mode 0)
 
 (defun kill-other-buffers ()
   (interactive)

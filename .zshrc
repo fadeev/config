@@ -15,6 +15,8 @@ alias la="ls -A"
 alias ll="ls -l"
 
 alias c="clear"
+alias e="emacs"
+alias r!="source .zshrc"
 
 # For Rake to work with zsh:
 alias rake="noglob rake"
