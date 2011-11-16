@@ -2,25 +2,23 @@
 
 (require 'epa) ; GPG encryption in org-mode
 (epa-file-enable)
+(setq org-log-done t) ; Adds "CLOSED" label with timestamp in org-mode
+(add-to-list 'auto-mode-alist '("\\.org$" . org-mode))
 
 (setq backup-directory-alist `(("." . "~/.emacs.d/backups/")))
 (setq backup-by-copying t)
 (setq auto-save-default nil)
+
 (setq-default indent-tabs-mode nil)
-(setq org-log-done t) ; Adds "CLOSED" label with timestamp in org-mode
-(defalias 'yes-or-no-p 'y-or-n-p)
 (global-set-key (kbd "M-/") 'hippie-expand)
-(global-set-key (kbd "C-x C-k") 'kill-other-buffers)
-(add-to-list 'auto-mode-alist '("\\.org$" . org-mode))
+
 (add-hook 'c-mode-hook 'c-bits)
 (add-hook 'html-mode-hook 'html-bits)
-(menu-bar-mode 0)
 
-(defun kill-other-buffers ()
-  (interactive)
-  (mapc 'kill-buffer 
-        (delq (current-buffer) 
-              (remove-if-not 'buffer-file-name (buffer-list)))))
+(defalias 'yes-or-no-p 'y-or-n-p)
+(setq inhibit-splash-screen t)
+(menu-bar-mode 0)
+(ido-mode t)
 
 (defun c-bits ()
   (fset 'main
