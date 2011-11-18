@@ -19,6 +19,7 @@
 (setq inhibit-splash-screen 1)
 (menu-bar-mode 0)
 (ido-mode 1)
+(setq ido-save-directory-list-file "~/.emacs.d/.ido.last")
 
 (defun c-bits ()
   (fset 'main
