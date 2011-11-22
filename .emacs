@@ -22,15 +22,37 @@
 
 (defun c-bits ()
   (fset 'main
-        "int main(int argc, char *argv[]) {\C-m  \C-m return 0;\C-m}\C-p\C-p\C-e")
+        (concat "int main(int argc, char *argv[]) {\C-m"
+                "\C-m return 0;\C-m"
+                "}"
+                "\C-p\C-p\C-e"))
   (fset 'inc
-        "#include <.h>\C-b\C-b\C-b")
+        (concat "#include <.h>"
+                "\C-b\C-b\C-b"))
   (fset 'def
         "#define "))
 
 (defun html-bits ()
-  (fset 'html "<!DOCTYPE html>\C-m<html>\C-m  <head>\C-m    <meta charset='utf-8'>\C-m    <meta name='description' content=''>\C-m    <title></title>\C-m    <link type='image/png' rel='shortcut icon' href=''>\C-m    <link type='text/css' rel='stylesheet' href=''>\C-m  </head>\C-m  <body>\C-m  \C-m  </body>\C-m</html>\C-p\C-p\C-e")
+  (fset 'html
+        (concat "<!DOCTYPE html>\C-m"
+                "<html>\C-m"
+                "  <head>\C-m"
+                "    <meta charset='utf-8'>\C-m"
+                "    <meta name='description' content=''>\C-m"
+                "    <title></title>\C-m"
+                "    <link type='image/png' rel='shortcut icon' href=''>\C-m"
+                "    <link type='text/css' rel='stylesheet' href=''>\C-m"
+                "  </head>\C-m"
+                "  <body>\C-m"
+                "    \C-m"
+                "</body>\C-m"
+                "</html>"
+                "\C-p\C-p\C-e"))
   (fset 'ul
-        "<ul>\C-m  <li></li>\C-m</ul>\C-p\C-f")
+        (concat "<ul>\C-m"
+                "  <li></li>\C-m"
+                "</ul>"
+                "\C-p\C-f"))
   (fset 'img
-        "<img src=\"\">\C-b\C-b"))
+        (concat "<img src=\"\">"
+                "\C-b\C-b")))
