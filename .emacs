@@ -1,58 +1,91 @@
 (require 'cl)
+(require 'epa)
 
-(require 'epa) ; GPG encryption in org-mode
-(epa-file-enable)
-(setq org-log-done 1) ; Adds "CLOSED" label with timestamp in org-mode
+(setq backup-directory-alist '("." . "~/.emacs.d/backups/")
+      backup-by-copying 1
+      auto-save-default nil
+      org-log-done 1 ; Adds "CLOSED" label with timestamp in org-mode
+      indent-tabs-mode nil
+      inhibit-splash-screen 1)
 
-(setq backup-directory-alist `(("." . "~/.emacs.d/backups/")))
-(setq backup-by-copying 1)
-(setq auto-save-default nil)
-
-(setq-default indent-tabs-mode nil)
-(global-set-key (kbd "M-/") 'hippie-expand)
+(add-to-list 'auto-mode-alist '("\\.info$" . Info-on-current-buffer))
 
 (add-hook 'c-mode-hook 'c-bits)
 (add-hook 'html-mode-hook 'html-bits)
 
-(defalias 'yes-or-no-p 'y-or-n-p)
 (menu-bar-mode 0)
 (ido-mode 1)
-(setq ido-save-directory-list-file "~/.emacs.d/.ido.last")
-(setq inhibit-splash-screen 1)
+
+(global-set-key "(" (lambda () (interactive) (insert "()") (backward-char)))
+(global-set-key "[" (lambda () (interactive) (insert "[]") (backward-char)))
+(global-set-key "{" (lambda () (interactive) (insert "{}") (backward-char)))
+(global-set-key "<" (lambda () (interactive) (insert "<>") (backward-char)))
+
+(global-set-key "\"" (lambda () (interactive) (insert "\"\"") (backward-char)))
+
+(global-set-key "\M-k" 'kill-line-backward)
+(global-set-key "\M-/" 'hippie-expand)
+
+(defalias 'yes-or-no-p 'y-or-n-p)
+
+(defun kill-line-backward ()
+  (interactive)
+  (kill-line 0))
 
 (defun c-bits ()
   (fset 'main
-        (concat "int main(int argc, char *argv[]) {\C-m"
-                "\C-m return 0;\C-m"
-                "}"
-                "\C-p\C-p\C-e"))
+	(lambda ()
+	  (interactive)
+	  (insert "int main(int argc, char *argv[]) {\n"
+		  "  \n"
+		  "  return 0;\n"
+		  "}")
+	  (previous-line 2) (end-of-line)))
   (fset 'inc
-        (concat "#include <.h>"
-                "\C-b\C-b\C-b"))
+	(lambda ()
+	  (interactive)
+	  (insert "#include <.h>")
+	  (backward-char 3)))
   (fset 'def
-        "#define "))
+	(lambda ()
+	  (interactive)
+	  (insert "#define "))))
 
 (defun html-bits ()
   (fset 'html
-        (concat "<!DOCTYPE html>\C-m"
-                "<html>\C-m"
-                "  <head>\C-m"
-                "    <meta charset='utf-8'>\C-m"
-                "    <meta name='description' content=''>\C-m"
-                "    <title></title>\C-m"
-                "    <link type='image/png' rel='shortcut icon' href=''>\C-m"
-                "    <link type='text/css' rel='stylesheet' href=''>\C-m"
-                "  </head>\C-m"
-                "  <body>\C-m"
-                "    \C-m"
-                "</body>\C-m"
-                "</html>"
-                "\C-p\C-p\C-e"))
+	(lambda ()
+	  (interactive)
+	  (insert "<!DOCTYPE html>\n"
+		  "<html>\n"
+		  "  <head>\n"
+		  "    <meta charset='utf-8'>\n"
+		  "    <meta name='description' content='")
+	  (insert (read-from-minibuffer "Description: ") "'>\n"
+		  "  <title>")
+	  (insert (read-from-minibuffer "Title: ") "</title>\n"
+		  "    <link type='image/png' rel='shortcut icon' href=''>\n"
+		  "    <link tnype='text/css' rel='stylesheet' href='")
+	  (insert (read-from-minibuffer "Stylesheet href: ") "'>\n"
+		  "  </head>\n"
+		  "  <body>\n"
+		  "    \n"
+		  "  </body>\n"
+		  "</html>")
+	  (previous-line 2) (end-of-line)))
   (fset 'ul
-        (concat "<ul>\C-m"
-                "  <li></li>\C-m"
-                "</ul>"
-                "\C-p\C-f"))
+	(lambda ()
+	  (interactive)
+	  (insert "<ul>\n"
+		  "  <li></li>\n"
+		  "</ul>")
+	  (previous-line) (forward-char)))
+  (fset 'li
+	(lambda ()
+	  (interactive)
+	  (insert "<li></li>")
+	  (backward-char 5)))
   (fset 'img
-        (concat "<img src=\"\">"
-                "\C-b\C-b")))
+	(lambda ()
+	  (interactive)
+	  (insert "<img src='")
+	  (insert (read-from-minibuffer "Image source: ") "'>"))))
