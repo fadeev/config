@@ -26,7 +26,14 @@
 (global-set-key "\M-k" 'kill-line-backward)
 (global-set-key "\M-/" 'hippie-expand)
 
+(global-set-key "\C-ce" 'executable-interpret)
+
 (defalias 'yes-or-no-p 'y-or-n-p)
+
+(defun insert-after-point (&rest string)
+  (let ((start (point)))
+    (mapc 'insert string)
+    (goto-char start)))
 
 (defun kill-line-backward ()
   (interactive)
@@ -37,15 +44,15 @@
 	(lambda ()
 	  (interactive)
 	  (insert "int main(int argc, char *argv[]) {\n"
-		  "  \n"
-		  "  return 0;\n"
-		  "}")
-	  (previous-line 2) (end-of-line)))
+		  "  ")
+	  (insert-after-point "\n"
+			      "  return 0;\n"
+			      "}")))
   (fset 'inc
 	(lambda ()
 	  (interactive)
-	  (insert "#include <.h>")
-	  (backward-char 3)))
+	  (insert "#include <")
+	  (insert-after-point ".h>")))
   (fset 'def
 	(lambda ()
 	  (interactive)
@@ -68,22 +75,22 @@
 	  (insert (read-from-minibuffer "Stylesheet href: ") "'>\n"
 		  "  </head>\n"
 		  "  <body>\n"
-		  "    \n"
-		  "  </body>\n"
-		  "</html>")
-	  (previous-line 2) (end-of-line)))
+		  "    ")
+	  (insert-after-point "\n"
+			      "  </body>\n"
+			      "</html>")))
   (fset 'ul
 	(lambda ()
 	  (interactive)
 	  (insert "<ul>\n"
-		  "  <li></li>\n"
-		  "</ul>")
-	  (previous-line) (forward-char)))
+		  "  <li>")
+	  (insert-after-point "</li>\n"
+			      "</ul>")))
   (fset 'li
 	(lambda ()
 	  (interactive)
-	  (insert "<li></li>")
-	  (backward-char 5)))
+	  (insert "<li>")
+	  (insert-after-point "</li>")))
   (fset 'img
 	(lambda ()
 	  (interactive)
