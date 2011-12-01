@@ -30,7 +30,8 @@
 
 (defalias 'yes-or-no-p 'y-or-n-p)
 
-(defun insert-after-point (&rest string)
+(defun insaft (&rest string)
+  "Inserts [ string ] after point."
   (let ((start (point)))
     (mapc 'insert string)
     (goto-char start)))
@@ -45,52 +46,60 @@
 	  (interactive)
 	  (insert "int main(int argc, char *argv[]) {\n"
 		  "  ")
-	  (insert-after-point "\n"
-			      "  return 0;\n"
-			      "}")))
+	  (insaft "\n"
+		  "  return 0;\n"
+		  "}")))
   (fset 'inc
 	(lambda ()
 	  (interactive)
 	  (insert "#include <")
-	  (insert-after-point ".h>")))
+	  (insaft ".h>")))
   (fset 'def
 	(lambda ()
 	  (interactive)
 	  (insert "#define "))))
 
 (defun html-bits ()
-  (fset 'html
-	(lambda ()
-	  (interactive)
-	  (insert "<!DOCTYPE html>\n"
-		  "<html>\n"
-		  "  <head>\n"
-		  "    <meta charset='utf-8'>\n"
-		  "    <meta name='description' content='")
-	  (insert (read-from-minibuffer "Description: ") "'>\n"
-		  "  <title>")
-	  (insert (read-from-minibuffer "Title: ") "</title>\n"
-		  "    <link type='image/png' rel='shortcut icon' href=''>\n"
-		  "    <link tnype='text/css' rel='stylesheet' href='")
-	  (insert (read-from-minibuffer "Stylesheet href: ") "'>\n"
-		  "  </head>\n"
-		  "  <body>\n"
-		  "    ")
-	  (insert-after-point "\n"
-			      "  </body>\n"
-			      "</html>")))
+  (local-set-key
+   "\t"
+   (lambda ()
+     (interactive)
+     (cond ((string= (current-word t) "html")
+	    (backward-kill-word 1)
+	    (insert "<!DOCTYPE html>\n"
+		    "<html>\n"
+		    "  <head>\n"
+		    "    <meta charset='utf-8'>\n"
+		    "    <meta name='description' content='")
+	    (insert (read-from-minibuffer "Description: ") "'>\n"
+		    "  <title>")
+	    (insert (read-from-minibuffer "Title: ") "</title>\n"
+		    "    <link type='image/png' rel='shortcut icon' href=''>\n"
+		    "    <link tnype='text/css' rel='stylesheet' href='")
+	    (insert (read-from-minibuffer "Stylesheet href: ") "'>\n"
+		    "  </head>\n"
+		    "  <body>\n"
+		    "    ")
+	    (insaft "\n"
+		    "  </body>\n"
+		    "</html>"))
+     ((string= (current-word t) "li")
+      (backward-kill-word 1)
+      (insert "<li>")
+      (insaft "</li>"))
+     (t (indent-according-to-mode)))))
   (fset 'ul
 	(lambda ()
 	  (interactive)
 	  (insert "<ul>\n"
 		  "  <li>")
-	  (insert-after-point "</li>\n"
+	  (insaft "</li>\n"
 			      "</ul>")))
   (fset 'li
 	(lambda ()
 	  (interactive)
 	  (insert "<li>")
-	  (insert-after-point "</li>")))
+	  (insaft "</li>")))
   (fset 'img
 	(lambda ()
 	  (interactive)
