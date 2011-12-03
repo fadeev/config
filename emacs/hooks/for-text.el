@@ -1,5 +1,5 @@
 (defun for-text ()
-  (unless (string= "html-mode" major-mode)
+  (unless (eq major-mode 'html-mode)
     (local-set-key
      "<"
      (lambda ()
