@@ -22,18 +22,18 @@
 	    (insaft "\n"
 		    "  </body>\n"
 		    "</html>"))
-     ((string= (current-word t) "li")
-      (backward-kill-word 1)
-      (insert "<li>")
-      (insaft "</li>"))
-     ((string= (current-word t) "ul")
-      (backward-kill-word 1)
-      (insert "<ul>\n"
-	      "  <li>")
-      (insaft "</li>\n"
-	      "</ul>"))
-     ((string= (current-word t) "img")
-      (backward-kill-word 1)
-      (insert "<img src='")
-      (insert (read-from-minibuffer "Image source: ") "'>"))
-     (t (indent-according-to-mode))))))
+	   ((string= (current-word t) "li")
+	    (backward-kill-word 1)
+	    (insert "<li>")
+	    (insaft "</li>"))
+	   ((string= (current-word t) "ul")
+	    (backward-kill-word 1)
+	    (insert "<ul>\n"
+		    "  <li>")
+	    (insaft "</li>\n"
+		    "</ul>"))
+	   ((string= (current-word t) "img")
+	    (backward-kill-word 1)
+	    (insert "<img src='")
+	    (insert (read-from-minibuffer "Image source: ") "'>"))
+	   (t (indent-according-to-mode))))))
