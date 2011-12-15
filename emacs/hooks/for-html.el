@@ -36,4 +36,5 @@
 	    (backward-kill-word 1)
 	    (insert "<img src='")
 	    (insert (read-from-minibuffer "Image source: ") "'>"))
-	   (t (indent-according-to-mode))))))
+	   (t
+	    (indent-according-to-mode))))))

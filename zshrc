@@ -45,3 +45,7 @@ function current_directory_dirty() {
     echo "%{$fg[red]%}+%{$reset_color%}"
   fi
 }
+
+# Write STDERR in red:
+exec 2>>(while read line; do
+  print '\e[91m'${(q)line}'\e[0m' > /dev/tty; print -n $'\0'; done &)
