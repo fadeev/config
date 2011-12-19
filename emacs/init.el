@@ -13,3 +13,4 @@
 (add-hook 'c-mode-hook 'for-c)
 (add-hook 'html-mode-hook 'for-html)
 (add-hook 'text-mode-hook 'for-text)
+(add-hook 'dired-mode-hook 'for-dired)
