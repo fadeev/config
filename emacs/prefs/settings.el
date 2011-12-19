@@ -8,5 +8,9 @@
       auto-mode-alist (append '(("\\.info$" . Info-on-current-buffer))
                               auto-mode-alist))
 
+(custom-set-variables '(ls-lisp-dirs-first t)
+		      '(ls-lisp-use-insert-directory-program nil)
+		      '(ls-lisp-verbosity nil))
+
 (menu-bar-mode 0)
 (ido-mode 1)

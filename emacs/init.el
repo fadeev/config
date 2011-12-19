@@ -1,5 +1,6 @@
 (require 'cl)
 (require 'epa)
+(require 'ls-lisp)
 
 (defun load-from (dir)
   (flet ((ex (command) (shell-command-to-string command))

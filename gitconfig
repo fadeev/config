@@ -1,0 +1,7 @@
+[user]
+	name = John Doe
+	email = john@example.com
+[color]
+	ui = true
+[alias]
+	logs = log --graph --pretty=oneline --abbrev-commit --decorate
