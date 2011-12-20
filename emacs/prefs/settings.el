@@ -1,5 +1,6 @@
 (setq backup-directory-alist '(("." . "~/.emacs.d/backups/"))
       backup-by-copying 1
+      ido-save-directory-list-file "~/.emacs.d/cache/"
       auto-save-default nil
       org-log-done 1 ; Adds "CLOSED" label with timestamp in org-mode
       indent-tabs-mode nil
