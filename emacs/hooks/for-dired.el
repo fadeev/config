@@ -5,8 +5,8 @@
 		   (interactive)
 		   (cond ((file-directory-p (thing-at-point 'filename))
 			  (let ((previous (current-buffer)))
-			    (dired-find-file))
-			    (kill-buffer previous))
+			    (dired-find-file)
+			    (kill-buffer previous)))
 			 (t
 			  (dired-find-file-other-window))))))
 (defun shrink-window-dired ()
