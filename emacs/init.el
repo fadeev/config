@@ -4,7 +4,7 @@
 
 (defun load-from (dir)
   (flet ((ex (command) (shell-command-to-string command))
-	 (em () (file-name-directory load-file-name)))
+         (em () (file-name-directory load-file-name)))
     (add-to-list 'load-path (concat (em) dir))
     (mapc 'load (split-string (substring (ex (concat "ls " (em) dir)) 0 -1)))))
 
