@@ -6,10 +6,6 @@
     (mapc 'insert string)
     (goto-char start)))
 
-(defun kill-line-backward ()
-  (interactive)
-  (kill-line 0))
-
 (defun insert-hashbang ()
   (interactive)
   (flet ((after-hash? () (string= "#" (if (char-before)
@@ -22,3 +18,11 @@
            (insert "!/usr/bin/env sh"))
           (t
            (self-insert-command 1)))))
+
+(defun kill-buffer-current ()
+  (interactive)
+  (kill-buffer (current-buffer)))
+
+(defun kill-line-backward ()
+  (interactive)
+  (kill-line 0))
