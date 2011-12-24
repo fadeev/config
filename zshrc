@@ -1,13 +1,5 @@
-# Bash prompt:
-export PS1="\w: "
-
-# Zsh prompt:
 export PROMPT='%~$(current_git_branch)%(!.!.:) '
 export RPROMPT=''
-
-export PATH="$HOME/bin:/usr/local/Cellar/ruby/1.9.2-p290/bin:/usr/local/bin"
-export PATH="$PATH:/usr/bin:/bin:/usr/local/sbin:/usr/sbin:/sbin"
-export PATH="$PATH:/usr/X11/bin:/opt/local/bin"
 
 export EDITOR="emacs"
 
