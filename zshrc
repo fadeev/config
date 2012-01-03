@@ -38,6 +38,4 @@ function current_directory_dirty() {
   fi
 }
 
-# Write STDERR in red:
-exec 2>>(while read line; do
-  print '\e[91m'${(q)line}'\e[0m' > /dev/tty; print -n $'\0'; done &)
+exec 2> >(while read line; do echo -e "\e[01;31m$line\e[0m"; done)
