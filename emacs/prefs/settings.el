@@ -1,6 +1,7 @@
 (setq backup-directory-alist '(("." . "~/.emacs.d/backups/"))
       backup-by-copying 1
-      ido-save-directory-list-file "~/.emacs.d/cache/"
+      ido-save-directory-list-file "~/.emacs.d/.ido.last"
+      ido-enable-flex-matching 1
       auto-save-default nil
       org-log-done 1 ; Adds "CLOSED" label with timestamp in org-mode
       inhibit-splash-screen 1
@@ -13,6 +14,17 @@
 (custom-set-variables '(ls-lisp-dirs-first t)
                       '(ls-lisp-use-insert-directory-program nil)
                       '(ls-lisp-verbosity nil))
+
+(custom-set-faces
+ '(fringe ((t (:background "grey95" :foreground "black"))))
+ '(highlight ((t (:background "darkseagreen2" :foreground "black"))))
+ '(isearch-fail ((t (:background "RosyBrown1" :foreground "black"))))
+ '(lazy-highlight ((t (:background "paleturquoise" :foreground "black"))))
+ '(match ((t (:background "yellow1" :foreground "black"))))
+ '(next-error ((t (:inherit region :foreground "black"))))
+ '(region ((t (:background "lightgoldenrod2" :foreground "black"))))
+ '(secondary-selection ((t (:background "yellow1" :foreground "black"))))
+ '(show-paren-match ((t (:background "turquoise" :foreground "black")))))
 
 (menu-bar-mode 0)
 (ido-mode 1)
