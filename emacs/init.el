@@ -15,8 +15,3 @@
 (add-hook 'html-mode-hook 'for-html)
 (add-hook 'text-mode-hook 'for-text)
 (add-hook 'dired-mode-hook 'for-dired)
-
-(add-hook 'change-major-mode-hook
-          '(lambda ()
-             (unless (eq 'major-mode 'text-mode)
-               (set-default 'truncate-lines t))))
