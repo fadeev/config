@@ -42,10 +42,10 @@ function git_status() {
 function dir_status() {
     function p() { if [[ -n $(ls | egrep "$1") ]]; then
         echo -n "%{$fg[$2]%} $3%{$reset_color%}"; fi }
-
-    p '.rb' 'red' 'ruby'
-    p '.lisp' 'blue' '(λ)'
-    p '.hs|.lhs' 'cyan' '\='
+    
+    p '\.rb' 'red' 'ruby'
+    p '\.lisp' 'blue' '(λ)'
+    p '\.hs|\.lhs' 'cyan' '\='
     p '[Cc]onfigure|', '', 'configure'
     p '[Mm]akefile|', '', 'make'
 }
