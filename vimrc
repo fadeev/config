@@ -1,4 +1,5 @@
-set nocompatible   " No compatibility with Vi
+syntax enable      " Syntax highlighting
+set nocompatible   " No compatibility with vi
 
 set ignorecase     " Case insensitive search
 set smartcase      " Capitalisation leads to case sensitivity
@@ -8,7 +9,6 @@ set nowrap         " Switch wrap off for everything
 set autoindent     " Autoindenting on
 set number         " Line numbering
 set numberwidth=5  " More space for numbers
-syntax enable      " Syntax highlighting
 set nobackup       " No filename~ backups
 set noswapfile 
 set splitbelow     " New files are placed below current
@@ -17,4 +17,4 @@ set ruler          " Line and column number in status line
 
 set tabstop=2      " Size of tab in spaces
 set shiftwidth=2   " How far text is indented using `<<` and `>>`
-set expandtab      " Tab is insert mode produces spaces
+set expandtab      " Tab in insert mode produces spaces

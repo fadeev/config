@@ -9,8 +9,10 @@
                             (kill-buffer previous)))
                          (t
                           (dired-find-file-other-window))))))
+
 (defun shrink-window-dired ()
-  (if (eq (count-windows) 1)
-      (split-window-horizontally))
-  (shrink-window-horizontally (- (window-width) 10))
-  (enlarge-window-horizontally 50))
+  (cond ((eq (count-windows) 1)
+         (split-window-horizontally)))
+  (cond ((> (frame-width) 120)
+         (shrink-window-horizontally (- (window-width) 10))
+         (enlarge-window-horizontally (/ (frame-width) 4)))))

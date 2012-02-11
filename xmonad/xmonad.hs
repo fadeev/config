@@ -1,5 +1,6 @@
-import XMonad
+import System.IO
 import Graphics.X11.Xlib
+import XMonad
 import XMonad.Hooks.ManageDocks
 import XMonad.Hooks.DynamicLog
 import XMonad.Hooks.EwmhDesktops
@@ -9,7 +10,6 @@ import XMonad.Prompt
 import XMonad.Prompt.Shell
 import XMonad.Prompt.XMonad
 import qualified Data.Map as M
-import System.IO
 
 keys' conf@(XConfig {XMonad.modMask = modm}) = M.fromList
       [((modm, xK_p), spawn "dmenu_run -b -fn 'DejaVu Sans Mono' -nb 'grey3' -nf 'grey20' -sb 'grey3' -sf 'grey'" )]

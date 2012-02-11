@@ -1,5 +1,5 @@
 (require 'cl)
-(require 'epa)
+(require 'epa nil t)
 (require 'ls-lisp)
 
 (defun load-from (dir)
@@ -8,8 +8,7 @@
     (add-to-list 'load-path (concat (em) dir))
     (mapc 'load (split-string (substring (ex (concat "ls " (em) dir)) 0 -1)))))
 
-(load-from "hooks")
-(load-from "prefs")
+(load-from "emacs")
 
 (add-hook 'c-mode-hook 'for-c)
 (add-hook 'html-mode-hook 'for-html)

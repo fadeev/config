@@ -1,4 +1,0 @@
-[color]
-        ui = true
-[alias]
-        logs = log --graph --pretty=oneline --abbrev-commit --decorate

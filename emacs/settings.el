@@ -3,7 +3,7 @@
       ido-save-directory-list-file "~/.emacs.d/.ido.last"
       ido-enable-flex-matching 1
       auto-save-default nil
-      org-log-done 1 ; Adds "CLOSED" label with timestamp in org-mode
+      org-log-done 1  ; Adds "CLOSED" label with timestamp in org-mode
       inhibit-splash-screen 1
       show-paren-delay 0
       auto-mode-alist (append '(("\\.info$" . Info-on-current-buffer))
@@ -29,3 +29,17 @@
 (menu-bar-mode 0)
 (ido-mode 1)
 (show-paren-mode 1)
+
+(global-set-key "(" (lambda () (interactive) (insert "()") (backward-char)))
+(global-set-key "[" (lambda () (interactive) (insert "[]") (backward-char)))
+(global-set-key "{" (lambda () (interactive) (insert "{}") (backward-char)))
+(global-set-key "<" (lambda () (interactive) (insert "<>") (backward-char)))
+
+(global-set-key "\"" (lambda () (interactive) (insert "\"\"") (backward-char)))
+
+(global-set-key (kbd "!") 'insert-hashbang)
+
+(global-set-key (kbd "M-k") 'kill-line-backward)
+(global-set-key (kbd "C-c C-c") 'kill-buffer-current)
+(global-set-key (kbd "C-x C-x") 'next-multiframe-window)
+(global-set-key (kbd "C-c C-e") 'executable-interpret)
