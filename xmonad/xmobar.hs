@@ -1,5 +1,4 @@
-Config
-  {
+Config {
     font = "xft:FreeSans:pixelsize=13",
     bgColor = "grey3",
     fgColor = "white",
@@ -10,4 +9,4 @@ Config
     sepChar = "%",
     alignSep = "}{",
     template = "%StdinReader% }{ %date%"
-  }
+}

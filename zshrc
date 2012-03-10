@@ -10,10 +10,10 @@ export CLICOLOR=1
 
 if [[ -x `which emacs` ]] then EDITOR="emacs"; fi
 
+alias emacs="emacs -nw"
 alias la="ls -a"
 alias ll="ls -l"
 alias c="clear"
-alias e="emacs -nw"
 alias r="source ~/.zshrc"
 
 setopt prompt_subst
