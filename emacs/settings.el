@@ -40,7 +40,7 @@
   `(("\M-k"     . kill-line-backward)
     ("\M-v"     . scroll-backward-screen-center)
     ("\M-p"     . scroll-backward-line)
-    ("\m-n"     . scroll-forward-line)
+    ("\M-n"     . scroll-forward-line)
     ("\M-D"     . kill-word-backward)
     ("\C-c\C-c" . kill-buffer-current)
     ("\C-c\C-e" . executable-interpret)
