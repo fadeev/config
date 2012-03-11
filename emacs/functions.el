@@ -29,10 +29,6 @@
   (interactive)
   (kill-line 0))
 
-(defun kill-word-backward ()
-  (interactive)
-  (kill-word -1))
-
 (defun ido-kill-buffers-clean ()
   (interactive)
   (mapc '(lambda (b) (and (get-buffer b) (kill-buffer b))) temp-buffers)

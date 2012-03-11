@@ -41,7 +41,7 @@
     ("\M-v"     . scroll-backward-screen-center)
     ("\M-p"     . scroll-backward-line)
     ("\M-n"     . scroll-forward-line)
-    ("\M-D"     . kill-word-backward)
+    ("\M-D"     . backward-kill-word)
     ("\C-c\C-c" . kill-buffer-current)
     ("\C-c\C-e" . executable-interpret)
     ("\C-x\C-x" . next-multiframe-window)
