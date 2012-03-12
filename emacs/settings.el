@@ -32,15 +32,15 @@
    ("\"" . "\"")))
 
 (gsk-key-function-macro
- '(("\^M" . newline-and-indent)
-   ("!"   . insert-hash-bang)))
+ '(("\^M"  . newline-and-indent)
+   ("\M-p" . scroll-backward-line)
+   ("\M-n" . scroll-forward-line)
+   ("!"    . insert-hash-bang)))
 
 (define-minor-mode key-bindings-minor-mode
   "Key bindings active in all modes. May overwrite existing ones." t ""
   `(("\M-k"     . kill-line-backward)
     ("\M-v"     . scroll-backward-screen-center)
-    ("\M-p"     . scroll-backward-line)
-    ("\M-n"     . scroll-forward-line)
     ("\M-D"     . backward-kill-word)
     ("\C-c\C-c" . kill-buffer-current)
     ("\C-c\C-e" . executable-interpret)
