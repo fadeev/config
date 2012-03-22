@@ -40,12 +40,9 @@
 (define-minor-mode key-bindings-minor-mode
   "Key bindings active in all modes. May overwrite existing ones." t ""
   `(("\M-k"     . kill-line-backward)
-    ("\M-v"     . scroll-backward-screen-center)
     ("\M-D"     . backward-kill-word)
-    ("\C-c\C-c" . kill-buffer-current)
     ("\C-c\C-e" . executable-interpret)
-    ("\C-x\C-x" . next-multiframe-window)
-    ("\C-xk"    . ido-kill-buffers-clean)
+    ("\M-v"     . scroll-backward-screen-center)
     ("\C-v"     . scroll-forward-screen-center)))
 
 (define-minor-mode automatically-save-mode

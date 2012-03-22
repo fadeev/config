@@ -14,4 +14,5 @@
 (add-hook 'html-mode-hook 'hook-html)
 (add-hook 'text-mode-hook 'hook-text)
 (add-hook 'dired-mode-hook 'hook-dired)
+(add-hook 'javascript-mode-hook 'hook-javascript)
 (add-hook 'haskell-mode-hook 'haskell-doc-mode)

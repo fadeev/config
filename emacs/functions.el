@@ -1,12 +1,6 @@
 (defalias 'shell-command 'eshell-command)
 (defalias 'yes-or-no-p 'y-or-n-p)
 
-(defun insaft (&rest string)
-  "Inserts STRING after point."
-  (let ((start (point)))
-    (mapc 'insert string)
-    (goto-char start)))
-
 (defun insert-hash-bang ()
   (interactive)
   (self-insert-command 1)
@@ -29,12 +23,6 @@
   (interactive)
   (kill-line 0))
 
-(defun ido-kill-buffers-clean ()
-  (interactive)
-  (mapc '(lambda (b) (and (get-buffer b) (kill-buffer b))) temp-buffers)
-  (let ((visible-buffers (ido-get-buffers-in-frames)))
-    (ido-kill-buffer)))
-
 (defun scroll-backward-screen-center ()
   (interactive)
   (scroll-down)
@@ -55,13 +43,32 @@
   (interactive)
   (scroll-up 1))
 
-(defun expand-word ()
-  "If ∃ a command [major mode]-expand-[current word] (e.g. html-expand-img),
+(defun expansion-word ()
+  "If ∃ command [major mode]-expansion-[current word], e.g. html-expansion-img,
 kill current word and run the command. Otherwise, indent according to mode."
   (interactive)
-  (let ((mode
-         (mapconcat 'identity
-                    (butlast (split-string (symbol-name major-mode) "-")) "-")))
-    (let ((func (intern (concat mode "-expand-" (current-word 1)))))
-      (cond ((commandp func) (backward-kill-word 1) (call-interactively func))
-            (t (indent-according-to-mode))))))
+  (flet ((i (&rest string)
+            (mapc '(lambda (s)
+                    (let ((start (point)))
+                       (cond ((stringp s) (insert s))
+                             ((sequencep s) (insert (eval s))))
+                       (indent-region start (point))))
+                  string)))
+    (let ((m (replace-regexp-in-string "-mode$" "" (symbol-name major-mode))))
+      (let ((e (intern (concat m "-expansion-" (current-word 1)))))
+        (cond ((boundp e)
+               (backward-kill-word 1)
+               (mapc 'i (reverse (cdr (memq 'point (reverse (symbol-value e))))))
+               (save-excursion
+                 (mapc 'i (cdr (memq 'point (symbol-value e))))))
+              (t
+               (indent-for-tab-command)))))))
+
+(defun ls-lisp-format (file-name file-attr file-size switches time-index)
+  "Redefines a function, which is used to output directory listings in dired.
+This makes it less verbose."
+  (concat (if (car file-attr) "d " "f ")
+          (propertize file-name 'dired-filename t)
+          (if (stringp (nth 0 file-attr))
+              (concat " -> " (nth 0 file-attr))
+            "\n")))

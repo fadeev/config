@@ -7,6 +7,6 @@
   (cond ((string= "<" (if (char-before) (char-to-string (char-before))))
          (backward-delete-char 1)
          (insert "«")
-         (insaft "»"))
+         (save-excursion (insert "»")))
         (t
          (self-insert-command 1))))
