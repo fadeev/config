@@ -64,7 +64,7 @@ kill current word and run the command. Otherwise, indent according to mode."
               (t
                (indent-for-tab-command)))))))
 
-(defun ls-lisp-format (file-name file-attr file-size switches time-index)
+(defun ls-lisp-format (file-name file-attr &optional file-size switches time-index now)
   "Redefines a function, which is used to output directory listings in dired.
 This makes it less verbose."
   (concat (if (car file-attr) "d " "f ")
