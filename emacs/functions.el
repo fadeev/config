@@ -47,18 +47,23 @@
   "If ∃ command [major mode]-expansion-[current word], e.g. html-expansion-img,
 kill current word and run the command. Otherwise, indent according to mode."
   (interactive)
-  (flet ((i (&rest string)
-            (mapc '(lambda (s)
+;; Let `i' insert each item of a sequence.
+  (flet ((i (&rest sequence)
+            (mapc '(lambda (item)
                     (let ((start (point)))
-                       (cond ((stringp s) (insert s))
-                             ((sequencep s) (insert (eval s))))
+                       (cond ((stringp item) (insert item))
+                             ((sequencep item) (insert (eval item))))
                        (indent-region start (point))))
-                  string)))
+                  sequence)))
+;; Let `m' is e.g. `html' if current major-mode is `html-mode'
     (let ((m (replace-regexp-in-string "-mode$" "" (symbol-name major-mode))))
+;; Let `e' is e.g. `html-expansion-div' if current word is `div'
       (let ((e (intern (concat m "-expansion-" (current-word 1)))))
         (cond ((boundp e)
                (backward-kill-word 1)
+;; Apply `i' to each item in `e' before symbol `point'.
                (mapc 'i (reverse (cdr (memq 'point (reverse (symbol-value e))))))
+;; Apply `i' to each item in `e' after symbol `point'.
                (save-excursion
                  (mapc 'i (cdr (memq 'point (symbol-value e))))))
               (t
