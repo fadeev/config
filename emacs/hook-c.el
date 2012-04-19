@@ -11,4 +11,4 @@
       '("#include <" point ".h>"))
 
 (setq c-expansion-def
-      '("#define "))
+      '("#define " point))

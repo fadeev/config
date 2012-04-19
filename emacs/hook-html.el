@@ -26,4 +26,4 @@
 
 (setq html-expansion-img
       '("<img src=\"" (read-from-minibuffer "src: ") "\""
-        "alt=\"" (read-from-minibuffer "alt: ") "\">"))
+        "alt=\"" (read-from-minibuffer "alt: ") "\">" point))
